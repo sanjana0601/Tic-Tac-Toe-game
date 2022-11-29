@@ -253,6 +253,9 @@ public class TicTacToe implements ActionListener{
 			textfield.setBackground(Color.RED);
 			textfield.setForeground(Color.GREEN);
 			textfield.setText("Draw");
+			for(int i=0;i<9;i++) {
+				buttons[i].setEnabled(false);
+			}
 			}
 	}
 	public void xWins(int a,int b,int c) {
