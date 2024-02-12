@@ -57,12 +57,16 @@ public class TicTacToe implements ActionListener{
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) 
+    {
 		
 		for(int i=0;i<9;i++) {
-			if (e.getSource()==buttons[i]) {
-				if(player1_turn) {
-					if(buttons[i].getText()=="") {
+			if (e.getSource()==buttons[i]) 
+            {
+				if(player1_turn) 
+                {
+					if(buttons[i].getText()=="") 
+                    {
 						buttons[i].setForeground(new Color(255,0,0));
 						buttons[i].setText("X");
 						player1_turn=false;
@@ -71,15 +75,17 @@ public class TicTacToe implements ActionListener{
 						
 					}
 				}
-				else {
-					if(buttons[i].getText()=="") {
+				else 
+                {
+					if(buttons[i].getText()=="") 
+                    {
 						buttons[i].setForeground(new Color(255,255,102));
 						buttons[i].setText("O");
 						player1_turn=true;
 						textfield.setText("X turn");
 						check();
-						}
 					}
+				}
 			
 			}
 		
@@ -239,25 +245,32 @@ public class TicTacToe implements ActionListener{
 				oWins(2,4,6);
 				
 			}
-			if(!win && 
-			buttons[0].getText()!="" && 
-			buttons[1].getText()!="" && 
-			buttons[2].getText()!="" && 
-			buttons[3].getText()!="" && 
-			buttons[4].getText()!="" && 
-			buttons[5].getText()!="" && 
-			buttons[6].getText()!="" && 
-			buttons[7].getText()!="" && 
-			buttons[8].getText()!="")
-		{
-			textfield.setBackground(Color.RED);
-			textfield.setForeground(Color.GREEN);
-			textfield.setText("Draw");
-			for(int i=0;i<9;i++) {
-				buttons[i].setEnabled(false);
-			}
-			}
-	}
+            
+            if (win) 
+            {
+                return;
+            }
+
+			boolean draw = true;
+            for (int i = 0; i < 9; i++) 
+            {
+                if (buttons[i].getText().isEmpty()) 
+                {
+                    draw = false;
+                    break;
+                }
+            }
+
+        if (draw) {
+            textfield.setBackground(Color.RED);
+            textfield.setForeground(Color.GREEN);
+            textfield.setText("Draw");
+            for (int i = 0; i < 9; i++) {
+                buttons[i].setEnabled(false);
+            }
+        }
+    }
+
 	public void xWins(int a,int b,int c) {
 		
 		buttons[a].setBackground(Color.GREEN);
